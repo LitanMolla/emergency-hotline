@@ -118,13 +118,21 @@ for (const service of services) {
     serviceContainer.appendChild(div);
 }
 
-serviceContainer.addEventListener('click',function (event) {
+serviceContainer.addEventListener('click', function (event) {
     // heart counter functionality
     if (event.target.className.includes('heart_btn')) {
         totalHeart++;
-        heartCount.innerText=totalHeart;
+        heartCount.innerText = totalHeart;
     }
     // Get Values
+    const serviceTitle = event.target.parentNode.parentNode.children[1].innerText;
+    const serviceNumber = event.target.parentNode.parentNode.children[3].innerText;
+    // copy clipboard function
+    if (event.target.className.includes('copy_btn')) {
+        navigator.clipboard.writeText(serviceNumber);
+        return alert(`${serviceNumber} number has been copied`)
+    }
+    console.log()
 })
 
 
