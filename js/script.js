@@ -116,7 +116,7 @@ for (const service of services) {
     class="fa-solid fa-phone pointer-events-none mr-[6px]"></i>Call</button>
     </div>
     </div>
-    `
+    `;
     serviceContainer.appendChild(div);
 }
 
@@ -133,7 +133,7 @@ serviceContainer.addEventListener('click', function (event) {
     if (event.target.className.includes('copy_btn')) {
         navigator.clipboard.writeText(serviceNumber);
         totalCopy++;
-        copyCount.innerText=totalCopy;
+        copyCount.innerText = totalCopy;
         return alert(`${serviceNumber} number has been copied`)
     }
     // Call Function
@@ -141,29 +141,31 @@ serviceContainer.addEventListener('click', function (event) {
         if (totalCoin <= 0) {
             return alert('Your coin is low, need minumam 20 coin for call!')
         }
+        // Get time 
+        let now = new Date();
+        let time = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+        // Get time 
         const div = document.createElement('div');
-        div.innerHTML=`
+        div.innerHTML = `
                             <div class="p-4 bg-[#FAFAFA] rounded-lg border border-gray-100">
                                 <div class="flex items-center justify-between">
                                     <div class="">
                                         <h4 class="text-lg font-semibold">${serviceTitle}</h4>
                                         <p class="text-lg text-[#5C5C5C]">${serviceNumber}</p>
                                     </div>
-                                    <p class="text-lg">11:36:58 AM</p>
+                                    <p class="text-lg">${time}</p>
                                 </div>
                             </div>
         `;
         historyContainer.appendChild(div);
-        totalCoin-=20;
-        coinCount.innerText=totalCoin;
+        totalCoin -= 20;
+        coinCount.innerText = totalCoin;
         return alert(`📞 Calling ${serviceTitle} - ${serviceNumber}...`);
     }
     console.log()
 })
 
-
-
-
-
-
-// console.log(totalCoin,totalCopy,totalHeart)
+// Clear History Function
+clearBtn.addEventListener('click', function () {
+    historyContainer.innerHTML = '';
+})
