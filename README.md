@@ -24,8 +24,8 @@ document.body.appendChild(div);
 
 ## 4. What is Event Delegation in JavaScript? Why is it useful?
 ```js
-document.getElementById("list").addEventListener("click", (e) => {
-  if(e.target.tagName === "LI"){
+document.getElementById("list").addEventListener("click", function (e) {
+  if(e.target.tagName === "li"){
     console.log("Clicked:", e.target.textContent);
   }
 });
@@ -37,5 +37,5 @@ document.getElementById("list").addEventListener("click", (e) => {
 ---
 
 ## 5. What is the difference between preventDefault() and stopPropagation() methods?
-- **preventDefault() => stops the element’s default action (e.g., form submit, link redirect).
-- ** stopPropagation() => prevents the event from bubbling up to parent elements.
+- **preventDefault()** => stops the element’s default action (e.g., form submit, link redirect).
+- **stopPropagation()** => prevents the event from bubbling up to parent elements.
