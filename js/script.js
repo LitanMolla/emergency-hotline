@@ -5,6 +5,8 @@ function getElement(id) {
 }
 // get elements
 const serviceContainer = getElement('service_container');
+const historyContainer = getElement('history_container');
+const clearBtn = getElement('clear_btn');
 const heartCount = getElement('heart_count');
 const coinCount = getElement('coin_count');
 const copyCount = getElement('copy_count');
@@ -130,7 +132,31 @@ serviceContainer.addEventListener('click', function (event) {
     // copy clipboard function
     if (event.target.className.includes('copy_btn')) {
         navigator.clipboard.writeText(serviceNumber);
+        totalCopy++;
+        copyCount.innerText=totalCopy;
         return alert(`${serviceNumber} number has been copied`)
+    }
+    // Call Function
+    if (event.target.className.includes('call_btn')) {
+        if (totalCoin <= 0) {
+            return alert('Your coin is low, need minumam 20 coin for call!')
+        }
+        const div = document.createElement('div');
+        div.innerHTML=`
+                            <div class="p-4 bg-[#FAFAFA] rounded-lg border border-gray-100">
+                                <div class="flex items-center justify-between">
+                                    <div class="">
+                                        <h4 class="text-lg font-semibold">${serviceTitle}</h4>
+                                        <p class="text-lg text-[#5C5C5C]">${serviceNumber}</p>
+                                    </div>
+                                    <p class="text-lg">11:36:58 AM</p>
+                                </div>
+                            </div>
+        `;
+        historyContainer.appendChild(div);
+        totalCoin-=20;
+        coinCount.innerText=totalCoin;
+        return alert(`📞 Calling ${serviceTitle} - ${serviceNumber}...`);
     }
     console.log()
 })
