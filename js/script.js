@@ -20,7 +20,7 @@ let totalCopy = Number(copyCount.innerText);
 const services = [
     {
         id: 1,
-        logo: './../assets/emergency.png',
+        logo: '../assets/emergency.png',
         title: 'National Emergency Number',
         subtitle: 'National Emergency',
         number: '999',
